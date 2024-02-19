@@ -1,0 +1,33 @@
+{% extends 'layouts/base.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-8">
+            <div class="card shadow">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-5">
+                            <img src="{{ url_for('static', filename='books/images/' + bk.image) }}"
+                                class="img-fluid rounded" alt="{{ bk.title }}">
+                        </div>
+                        <div class="col-md-7">
+                            <h1 class="card-title">{{ bk.title }} BOOK</h1>
+                            <div class="card-text">
+                                <p><strong>Price:</strong> ${{ bk.price }}</p>
+                                <p><strong>No. of Pages:</strong> {{ bk.no_of_pages }}</p>
+                                <p><strong>Created_at:</strong> {{ bk.created_at }}</p>
+                                <p><strong>Updated_at:</strong> {{ bk.updated_at }}</p>
+                            </div>
+                            <hr>
+                            <div class="text-center">
+                                <a href="#" class="btn btn-primary btn-lg">Buy Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

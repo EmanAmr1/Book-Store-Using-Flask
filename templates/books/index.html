@@ -1,0 +1,33 @@
+{% extends 'layouts/base.html' %}
+
+{% block content %}
+<div class="container">
+    <h1 class="text-center mb-4" style="color: brown; font-size: 28px; font-weight: bold; text-transform: uppercase;">
+        Books Home</h1>
+
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        {% for book in bks %}
+        <div class="col">
+            <div class="card shadow-lg"> <!-- Added 'shadow-lg' class for larger shadow -->
+                <img src="{{ url_for('static', filename='books/images/' + book.image) }}" class="card-img-top"
+                    alt="{{ book.title }}" style="max-height: 200px;">
+                <div class="card-body">
+                    <h5 class="card-title" style="font-size: 16px;">{{ book.title }}</h5>
+                    <p class="card-text" style="font-size: 14px;">Some quick example text to build on the card title and
+                        make up the bulk of the
+                        card's content.</p>
+                </div>
+                <div class="card-footer">
+                    <a href="{{ url_for('mybook.details', id=book.id) }}" class="btn btn-primary btn-sm">Show</a>
+                    <form action="{{ url_for('delete_book', book_id=book.id) }}" method="post" class="d-inline">
+                        <input type="hidden" name="_method" value="DELETE">
+                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                    </form>
+                    <a href="{{ url_for('book.update', book_id=book.id) }}" class="btn btn-success btn-sm">Update</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

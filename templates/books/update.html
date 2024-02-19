@@ -1,0 +1,30 @@
+{% extends 'layouts/base.html' %}
+
+{% block content %}
+<h1>Update Book</h1>
+
+<form action="{{ url_for('book.update', book_id=book.id) }}" method="post">
+    <div class="mb-3">
+        <label class="form-label">Title</label>
+        <input type="text" name="title" class="form-control" value="{{ book.title }}">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Image</label>
+        <input type="text" name="image" class="form-control" value="{{ book.image }}">
+    </div>
+
+    <div class="mb-3">
+        <label  class="form-label">Price</label>
+        <input type="number" name="price" class="form-control">
+      </div>
+    
+    
+      <div class="mb-3">
+        <label  class="form-label">no of pages</label>
+        <input type="number" name="no_of_pages" class="form-control">
+      </div>
+
+
+    <button type="submit" class="btn btn-primary">Update</button>
+</form>
+{% endblock %}
